@@ -12,7 +12,8 @@ setup(
     author="Caio Ariede",
     author_email="caio.ariede@gmail.com",
     url="http://github.com/caioariede/django-location-field",
-    license="MIT License",
+    license="MIT",
+    zip_safe=False,
     platforms=["any"],
     packages=find_packages(),
     package_data={'location_field': [
@@ -25,11 +26,15 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-        "Programming Language :: Python",
         "Framework :: Django",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.4",
     ],
     include_package_data=True,
     install_requires=[
+        'Django>=1.7,<1.9',
         'six',
     ],
+    test_suite="runtests.runtests",
 )

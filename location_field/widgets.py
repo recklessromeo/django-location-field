@@ -13,10 +13,13 @@ if GOOGLE_MAPS_V3_APIKEY:
 
 
 class LocationWidget(widgets.TextInput):
-    def __init__(self, attrs=None, based_fields=None, zoom=None, suffix='', **kwargs):
-        self.based_fields = based_fields
-        self.zoom = zoom
-        self.suffix = suffix
+    def __init__(self, **kwargs):
+        attrs = kwargs.pop('attrs', None)
+
+        self.based_fields = kwargs.pop('based_fields', None)
+        self.zoom = kwargs.pop('zoom', None)
+        self.suffix = kwargs.pop('suffix', '')
+
         super(LocationWidget, self).__init__(attrs)
 
     def render(self, name, value, attrs=None):
@@ -63,5 +66,6 @@ class LocationWidget(widgets.TextInput):
         # Use schemaless URL so it works with both, http and https websites
         js = (
             GOOGLE_API_JS,
+            settings.STATIC_URL + 'location_field/js/jquery.livequery.js',
             settings.STATIC_URL + 'location_field/js/form.js',
         )

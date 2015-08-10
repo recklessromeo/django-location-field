@@ -1,0 +1,20 @@
+language: python
+python: 2.7
+sudo: false
+env:
+  - TOX_ENV=lnx-Django17
+  - TOX_ENV=lnx-Django18
+addons:
+  apt:
+    packages:
+    # sqlite
+    - sqlite3
+    - libsqlite3-dev
+    # geos
+    - binutils
+    - libproj-dev
+    - gdal-bin
+install:
+  - pip install 'tox>=2'
+script:
+  - tox -e $TOX_ENV
